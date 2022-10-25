@@ -4,6 +4,34 @@
     "angular-app": "packages/angular-app",
     "core-components": "packages/core-components",
     "core-components-angular": "packages/core-components-angular",
+    "core-components-e2e": {
+      "root": "packages/core-components-e2e",
+      "sourceRoot": "packages/core-components-e2e/src",
+      "projectType": "application",
+      "targets": {
+        "e2e": {
+          "executor": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "packages/core-components-e2e/cypress.json",
+            "devServerTarget": "core-components:storybook"
+          },
+          "configurations": {
+            "ci": {
+              "devServerTarget": "core-components:storybook:ci"
+            }
+          }
+        },
+        "lint": {
+          "executor": "@nrwl/linter:eslint",
+          "outputs": ["{options.outputFile}"],
+          "options": {
+            "lintFilePatterns": ["packages/core-components-e2e/**/*.{js,ts}"]
+          }
+        }
+      },
+      "tags": [],
+      "implicitDependencies": ["core-components"]
+    },
     "core-components-react": "packages/core-components-react",
     "react-app": "packages/react-app"
   }
